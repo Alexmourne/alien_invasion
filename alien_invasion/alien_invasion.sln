@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "alien_invasion", "alien_invasion\alien_invasion.pyproj", "{BEC661E0-262D-4C7A-ACCA-AF0D43ACCA27}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BEC661E0-262D-4C7A-ACCA-AF0D43ACCA27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEC661E0-262D-4C7A-ACCA-AF0D43ACCA27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C5045776-C0B5-4403-8331-CC10AB0E602B}
+	EndGlobalSection
+EndGlobal
