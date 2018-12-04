@@ -7,20 +7,20 @@ def check_keydown_events(event, ship):
         ship.moving_right = True
     elif event.key == pygame.K_LEFT or event.key == pygame.K_a:
         ship.moving_left = True
-    elif event.key == pygame.K_UP:
+    if event.key == pygame.K_UP or event.key == pygame.K_w:
         ship.moving_up = True
-    elif event.key == pygame.K_DOWN:
-        ship.moving_dowm = True
+    elif event.key == pygame.K_DOWN or event.key == pygame.K_s:
+        ship.moving_down = True
 
 def check_keyup_events(event, ship):
     if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
         ship.moving_right = False
     elif event.key == pygame.K_LEFT or event.key == pygame.K_a:
         ship.moving_left = False
-    elif event.key == pygame.K_UP:
+    if event.key == pygame.K_UP or event.key == pygame.K_w:
         ship.moving_up = False
-    elif event.key == pygame.K_DOWN:
-        ship.moving_dowm = False
+    elif event.key == pygame.K_DOWN or event.key == pygame.K_s:
+        ship.moving_down = False
 
 def check_events(ship):
     """"""
