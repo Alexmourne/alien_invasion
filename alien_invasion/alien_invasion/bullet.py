@@ -6,7 +6,7 @@ class Bullet(Sprite):
     
     def __init__(self, ai_settings, screen, ship):
         """"""
-        super().__init__
+        super().__init__()
         self.screen = screen
 
         #
@@ -23,7 +23,7 @@ class Bullet(Sprite):
     def update(self):
         """"""
         #
-        self.y = self.speed_factor
+        self.y -= self.speed_factor
         #
         self.rect.y = self.y
 
