@@ -49,8 +49,9 @@ def check_events(ai_settings, screen, ship, bullets):
 
         elif event.type == pygame.KEYUP:
             check_keyup_events(event, ship)
-                       
-def update_screen(ai_settings, screen, ship, aliens, bullets):
+
+def update_screen(ai_settings, screen, ship, stats, aliens, bullets, 
+                  play_button):
     """"""
     #
     screen.fill(ai_settings.bg_color)
@@ -62,6 +63,10 @@ def update_screen(ai_settings, screen, ship, aliens, bullets):
     ship.blitme()
     #alien.blitme()
     aliens.draw(screen)
+
+    #
+    if not stats.game_active:
+        play_button.draw_button()
 
     #
     pygame.display.flip()
