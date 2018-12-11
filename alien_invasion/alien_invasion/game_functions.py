@@ -1,4 +1,5 @@
 import sys
+import json
 from time import sleep
 
 import pygame
@@ -19,6 +20,7 @@ def check_keydown_events(event, ai_settings, screen, stats, sb, ship, aliens,
     if event.key == pygame.K_SPACE or event.key == pygame.K_RSHIFT:
         fire_bullet(ai_settings, screen, ship, bullets)
     if event.key == pygame.K_q:
+        save_records(ai_settings, sb)
         sys.exit()
     if event.key == pygame.K_p and not stats.game_active:
         start_game(ai_settings, screen, stats, sb, ship, aliens, bullets)
@@ -40,12 +42,44 @@ def check_keyup_events(event, ship):
     elif event.key == pygame.K_DOWN or event.key == pygame.K_s:
         ship.moving_down = False
 
+def get_stored_highscore(ai_settings):
+    """"""
+    file_path = ai_settings.highscore_filepath
+
+    try:
+        with open(file_path) as f_obj:
+            highscore_historical = json.load(f_obj)
+    except FileNotFoundError:
+        return None
+    else:
+        return highscore_historical
+
+def update_stored_highscore(ai_settings, sb):
+    """"""
+    file_path = ai_settings.highscore_filepath
+    highscore_current = sb.stats.score            
+
+    with open(file_path, 'w') as f_obj:
+        json.dump(highscore_current, f_obj)
+
+def save_records(ai_settings, sb):
+    """"""
+    highscore_historical = get_stored_highscore(ai_settings)
+    highscore_current = sb.stats.score
+    
+    if highscore_historical:
+        if highscore_historical < highscore_current:
+            update_stored_highscore(ai_settings, sb)
+    else:
+        update_stored_highscore(ai_settings, sb)
+
 def check_events(ai_settings, screen, stats, sb, play_button, ship,aliens, 
         bullets):
     """"""
     #
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
+            save_records(ai_settings, sb)
             sys.exit()
             
         elif event.type == pygame.KEYDOWN:
@@ -73,6 +107,9 @@ def check_play_button(ai_settings, screen, stats, sb, play_button, ship,
 
 def start_game(ai_settings, screen, stats, sb, ship, aliens, bullets):
     """"""
+    #
+    save_records(ai_settings, sb)
+
     #
     ai_settings.initialize_dynamic_settings()
 
